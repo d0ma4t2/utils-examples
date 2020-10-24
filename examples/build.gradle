@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+    id 'scala'
+}
+
+archivesBaseName = 'examples'
+group 'cn.colorfulboxes.examples'
+version '1.0-SNAPSHOT'
+
+jar.enabled = true
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+dependencies {
+
+    compile project(":common-lib")
+
+}

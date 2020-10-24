@@ -1,0 +1,79 @@
+// buildscript代码块中的声明是gradle脚本自身需要的资源。
+// 可以声明的资源包括依赖项、第三方插件、maven仓库地址等。
+// gradle在执行脚本时，会优先执行buildscript代码块中的内容，然后才会执行剩余的build脚本。
+buildscript {
+
+    ext {
+
+    }
+
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://maven.aliyun.com/repository/public'}
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/spring' }
+        maven { url 'https://maven.aliyun.com/repository/spring-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/grails-core' }
+        maven { url 'https://maven.aliyun.com/repository/apache-snapshots' }
+        maven { url 'https://repository.cloudera.com/artifactory/cloudera-repos/'}
+        mavenLocal()
+    }
+    dependencies {
+        /* 添加插件依赖路径（通过jar方式） */
+    }
+}
+
+
+
+/* 所有子项目的通用配置 */
+subprojects {
+
+
+    /* 使用二进制插件 */
+    group =  'cn.colorfulboxes'
+    version =  '1.0-SNAPSHOT'
+
+    apply plugin: 'java'
+    apply plugin: 'scala'
+
+    /* java编译的时候缺省状态下会因为中文字符而失败 */
+
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://maven.aliyun.com/repository/public'}
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/spring' }
+        maven { url 'https://maven.aliyun.com/repository/spring-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/grails-core' }
+        maven { url 'https://maven.aliyun.com/repository/apache-snapshots' }
+        maven { url 'https://repository.cloudera.com/artifactory/cloudera-repos/'}
+        mavenLocal()
+    }
+
+    ext {
+        scalaVersion = '2.11.12'
+        cdhSparkVersion = '2.4.0-cdh6.3.1'
+        cdhHadoopVersion = '3.0.0-cdh6.3.1'
+        cdhHBaseVersion = '2.1.0-cdh6.3.1'
+        dbutilsVersion = '1.7'
+        fastjsonVersion = '1.2.74'
+        mysqlConnectorVersion = '8.0.18'
+        hutoolVersion = '5.4.4'
+        redisPoolVersion = '6.0.0.RELEASE'
+        hikariCP = '3.4.5'
+
+    }
+
+    dependencies {
+
+    }
+
+}

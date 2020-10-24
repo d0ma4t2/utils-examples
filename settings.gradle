@@ -1,0 +1,4 @@
+rootProject.name = 'utils-examples'
+include 'common-lib', 'examples'
+
+

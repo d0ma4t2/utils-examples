@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'scala'
+}
+
+archivesBaseName = 'common-lib'
+group 'cn.colorfulboxes.common-lib'
+version '1.0-SNAPSHOT'
+
+jar.enabled = true
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+dependencies {
+
+    compile(
+            "org.scala-lang:scala-library:${scalaVersion}",
+            "commons-dbutils:commons-dbutils:${dbutilsVersion}",
+            "com.alibaba:fastjson:${fastjsonVersion}",
+            "mysql:mysql-connector-java:${mysqlConnectorVersion}",
+            "org.apache.spark:spark-sql_2.11:${cdhSparkVersion}",
+            "org.apache.spark:spark-hive_2.11:${cdhSparkVersion}",
+            "org.apache.spark:spark-streaming_2.11:${cdhSparkVersion}",
+            "org.apache.spark:spark-streaming-kafka-0-10_2.11:${cdhSparkVersion}",
+            "org.apache.hadoop:hadoop-client:${cdhHadoopVersion}",
+            "org.apache.hadoop:hadoop-auth:${cdhHadoopVersion}",
+            "org.apache.hbase:hbase-client:${cdhHBaseVersion}",
+            "org.apache.hbase:hbase-server:${cdhHBaseVersion}",
+            "org.apache.hbase:hbase-spark:${cdhHBaseVersion}",
+            "cn.hutool:hutool-all:${hutoolVersion}",
+            "io.lettuce:lettuce-core:${redisPoolVersion}",
+            "com.zaxxer:HikariCP:${hikariCP}"
+    )
+
+}
