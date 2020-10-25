@@ -1,0 +1,43 @@
+spark:
+  url:
+
+flink:
+  url:
+
+mysql:
+  driverClassName: com.mysql.cj.jdbc.Driver
+  jdbcUrl: jdbc:mysql:///bigdata?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+  username: root
+  password: sjz123457
+  maximumPoolSize: 256
+  minimumIdle: 8
+  idleTimeout: 600000
+  connectionTimeout: 30000
+  maxLifetime: 1800000
+  readOnly: false
+
+redis:
+  url: redis://localhost
+
+elasticsearch:
+  url:
+
+hbase:
+  url:
+
+kafka:
+  url: dn101:9092,nn102:9092,nn103:9092
+
+hadoop:
+  url:
+
+hive:
+  url:
+
+kudu:
+  url:
+
+impala:
+  url:
+
+

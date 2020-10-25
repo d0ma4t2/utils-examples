@@ -43,7 +43,6 @@ subprojects {
     tasks.withType(JavaCompile) {
         options.encoding = 'UTF-8'
     }
-
     repositories {
         maven { url 'https://maven.aliyun.com/repository/central' }
         maven { url 'https://maven.aliyun.com/repository/jcenter' }
@@ -63,13 +62,16 @@ subprojects {
         cdhSparkVersion = '2.4.0-cdh6.3.1'
         cdhHadoopVersion = '3.0.0-cdh6.3.1'
         cdhHBaseVersion = '2.1.0-cdh6.3.1'
+        kuduSparkVersion = '1.10.0-cdh6.3.1'
+        redisSparkVersion = '2.5.0'
+        flinkVersion = '1.11.2'
+        redisFlinkVersion = '1.1.5'
         dbutilsVersion = '1.7'
         fastjsonVersion = '1.2.74'
         mysqlConnectorVersion = '8.0.18'
         hutoolVersion = '5.4.4'
         redisPoolVersion = '6.0.0.RELEASE'
         hikariCP = '3.4.5'
-
     }
 
     dependencies {

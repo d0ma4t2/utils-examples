@@ -1,7 +1,6 @@
 package cn.colorfulboxes.examples.spark
 
-
-object KafkaExample {
+object RedisExample {
 
   def main(args: Array[String]): Unit = {
 

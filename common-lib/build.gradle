@@ -9,9 +9,13 @@ version '1.0-SNAPSHOT'
 
 jar.enabled = true
 
-sourceCompatibility = '1.8'
-targetCompatibility = '1.8'
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
 
+configurations {
+    // 日志冲突
+    compile.exclude group: "ch.qos.logback"
+}
 dependencies {
 
     compile(
@@ -23,6 +27,14 @@ dependencies {
             "org.apache.spark:spark-hive_2.11:${cdhSparkVersion}",
             "org.apache.spark:spark-streaming_2.11:${cdhSparkVersion}",
             "org.apache.spark:spark-streaming-kafka-0-10_2.11:${cdhSparkVersion}",
+            "com.redislabs:spark-redis_2.11:${redisSparkVersion}",
+            "org.apache.kudu:kudu-spark2_2.11:${kuduSparkVersion}",
+            "org.apache.flink:flink-scala_2.11:${flinkVersion}",
+            "org.apache.flink:flink-streaming-scala_2.11:${flinkVersion}",
+            "org.apache.flink:flink-connector-jdbc_2.11:${flinkVersion}",
+            "org.apache.flink:flink-connector-kafka-0.11_2.11:${flinkVersion}",
+            "org.apache.flink:flink-connector-redis_2.11:${redisFlinkVersion}",
+            "org.apache.flink:flink-connector-elasticsearch6_2.11:${flinkVersion}",
             "org.apache.hadoop:hadoop-client:${cdhHadoopVersion}",
             "org.apache.hadoop:hadoop-auth:${cdhHadoopVersion}",
             "org.apache.hbase:hbase-client:${cdhHBaseVersion}",
