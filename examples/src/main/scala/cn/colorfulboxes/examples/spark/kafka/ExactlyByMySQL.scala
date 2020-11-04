@@ -1,7 +1,8 @@
 package cn.colorfulboxes.examples.spark.kafka
 
-import java.sql.{SQLException}
+import java.sql.SQLException
 
+import cn.colorfulboxes.utils.spark.config.pool.DataSourcePool
 import cn.colorfulboxes.utils.spark.{KafkaUtil, SparkUtil}
 import cn.hutool.db.{Db, Entity, Session}
 import org.apache.kafka.clients.consumer.ConsumerRecord
@@ -29,7 +30,7 @@ object ExactlyByMySQL {
 
     import scala.collection.JavaConverters._
 
-    val offsetses = Db.use().find(
+    val offsetses = Db.use(DataSourcePool.getInstance.getDataSource).find(
       List("topic_partition", "offset").asJava,
       Entity.create("t_kafka_offset").set("app_gid", appName + "_" + groupId)
     ).asScala

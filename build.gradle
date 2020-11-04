@@ -44,6 +44,7 @@ subprojects {
         options.encoding = 'UTF-8'
     }
     repositories {
+        maven { url 'https://repository.cloudera.com/artifactory/cloudera-repos/'}
         maven { url 'https://maven.aliyun.com/repository/central' }
         maven { url 'https://maven.aliyun.com/repository/jcenter' }
         maven { url 'https://maven.aliyun.com/repository/public'}
@@ -53,7 +54,6 @@ subprojects {
         maven { url 'https://maven.aliyun.com/repository/spring-plugin' }
         maven { url 'https://maven.aliyun.com/repository/grails-core' }
         maven { url 'https://maven.aliyun.com/repository/apache-snapshots' }
-        maven { url 'https://repository.cloudera.com/artifactory/cloudera-repos/'}
         mavenLocal()
     }
 

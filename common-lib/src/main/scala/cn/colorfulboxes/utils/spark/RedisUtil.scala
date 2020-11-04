@@ -6,7 +6,6 @@ import io.lettuce.core.RedisClient
 import io.lettuce.core.api.StatefulRedisConnection
 import io.lettuce.core.api.sync.RedisCommands
 
-
 object RedisUtil {
 
     private val client: RedisClient = RedisClient.create("redis://localhost")
@@ -17,6 +16,7 @@ object RedisUtil {
      * 直接得到一个 Redis 的连接
      */
     def redisCommands: RedisCommands[String, String] = {
+
         // sync, 设置超时时间30s.
         connection.setTimeout(Duration.ofSeconds(30))
         connection.sync

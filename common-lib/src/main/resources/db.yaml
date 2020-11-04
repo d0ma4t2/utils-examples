@@ -8,7 +8,8 @@ mysql:
   driverClassName: com.mysql.cj.jdbc.Driver
   jdbcUrl: jdbc:mysql:///bigdata?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
   username: root
-  password: sjz123457
+#  password: sjz123457
+  password: 123456
   maximumPoolSize: 256
   minimumIdle: 8
   idleTimeout: 600000
