@@ -20,9 +20,7 @@ dependencies {
 
     compile(
             "org.scala-lang:scala-library:${scalaVersion}",
-            "commons-dbutils:commons-dbutils:${dbutilsVersion}",
             "com.alibaba:fastjson:${fastjsonVersion}",
-            "mysql:mysql-connector-java:${mysqlConnectorVersion}",
             "org.apache.spark:spark-sql_2.11:${cdhSparkVersion}",
             "org.apache.spark:spark-hive_2.11:${cdhSparkVersion}",
             "org.apache.spark:spark-streaming_2.11:${cdhSparkVersion}",
@@ -43,7 +41,8 @@ dependencies {
             "org.apache.hbase:hbase-spark:${cdhHBaseVersion}",
             "cn.hutool:hutool-all:${hutoolVersion}",
             "io.lettuce:lettuce-core:${redisPoolVersion}",
-            "com.zaxxer:HikariCP:${hikariCP}"
+            "com.zaxxer:HikariCP:${hikariCP}",
+            "org.apache.phoenix:phoenix-spark:${cdhPhoenixVersion}"
     )
 
 }

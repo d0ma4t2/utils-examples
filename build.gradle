@@ -44,7 +44,6 @@ subprojects {
         options.encoding = 'UTF-8'
     }
     repositories {
-        maven { url 'https://repository.cloudera.com/artifactory/cloudera-repos/'}
         maven { url 'https://maven.aliyun.com/repository/central' }
         maven { url 'https://maven.aliyun.com/repository/jcenter' }
         maven { url 'https://maven.aliyun.com/repository/public'}
@@ -54,6 +53,8 @@ subprojects {
         maven { url 'https://maven.aliyun.com/repository/spring-plugin' }
         maven { url 'https://maven.aliyun.com/repository/grails-core' }
         maven { url 'https://maven.aliyun.com/repository/apache-snapshots' }
+        maven { url 'https://repository.cloudera.com/artifactory/cloudera-repos/'}
+        maven { url 'https://archive.cloudera.com/phoenix/6.2/maven-repository/'}
         mavenLocal()
     }
 
@@ -66,12 +67,13 @@ subprojects {
         redisSparkVersion = '2.5.0'
         flinkVersion = '1.11.2'
         redisFlinkVersion = '1.1.5'
-        dbutilsVersion = '1.7'
         fastjsonVersion = '1.2.74'
         mysqlConnectorVersion = '8.0.18'
         hutoolVersion = '5.4.4'
         redisPoolVersion = '6.0.0.RELEASE'
         hikariCP = '3.4.5'
+        phoenixVersion = '5.0.0-HBase-2.0'
+        cdhPhoenixVersion = '5.0.0-cdh6.2.0'
     }
 
     dependencies {

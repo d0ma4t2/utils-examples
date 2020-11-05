@@ -17,6 +17,11 @@ mysql:
   maxLifetime: 1800000
   readOnly: false
 
+phoenix:
+  driver: org.apache.phoenix.jdbc.PhoenixDriver
+  url: jdbc:phoenix:dn37,dn38,dn36:2181
+
+
 redis:
   url: redis://localhost
 

@@ -16,9 +16,14 @@ import org.slf4j.{Logger, LoggerFactory}
 
 /**
  * https://hbase.apache.org/book.html#_sparksqldataframes<br>
+ *
  * https://www.cnblogs.com/cssdongl/p/6238007.html<br>
+ *
  * http://support-it.huawei.com/docs/zh-cn/fusioninsight-all/fusioninsight_hd_6.5.1_documentation/zh-cn_topic_0165582918.html<br>
- * https://github.com/cloudera-labs/SparkOnHBase/tree/cdh5-0.0.2/src/main/scala/com/cloudera/spark/hbase/example
+ *
+ * https://github.com/cloudera-labs/SparkOnHBase/tree/cdh5-0.0.2/src/main/scala/com/cloudera/spark/hbase/example<br>
+ *
+ * https://help.aliyun.com/document_detail/94970.html
  */
 object HBaseExample {
 
@@ -91,43 +96,43 @@ object HBaseExample {
     /// BulkGet
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //    try {
-    //      val rdd: RDD[Array[Byte]] = sc.parallelize(Array(
-    //        Bytes.toBytes("1"),
-    //        Bytes.toBytes("2"),
-    //        Bytes.toBytes("3"),
-    //        Bytes.toBytes("4"),
-    //        Bytes.toBytes("5"),
-    //        Bytes.toBytes("6"),
-    //        Bytes.toBytes("7")))
-    //      val getRdd: RDD[String] = hc.bulkGet[Array[Byte], String](
-    //        TableName.valueOf(tableName),
-    //        2, // todo
-    //        rdd,
-    //        record => {
-    //          log.info("making Get")
-    //          new Get(record)
-    //        },
-    //        (result: Result) => {
-    //          val it = result.listCells().iterator()
-    //          val sb = new StringBuilder
-    //          sb.append(Bytes.toString(result.getRow) + ":")
-    //          while (it.hasNext) {
-    //            val cell: Cell = it.next()
-    //            val q = Bytes.toString(CellUtil.cloneQualifier(cell))
-    //            if (q.equals("counter")) {
-    //              sb.append("(" + q + "," + Bytes.toLong(CellUtil.cloneValue(cell)) + ")")
-    //            } else {
-    //              sb.append("(" + q + "," + Bytes.toString(CellUtil.cloneValue(cell)) + ")")
-    //            }
-    //          }
-    //          sb.toString()
-    //        })
-    //      getRdd.collect().foreach(println)
-    //    } finally {
-    //      sc.stop()
-    //    HBaseUtil.closeHbaseConn()
-    //    }
+        try {
+          val rdd: RDD[Array[Byte]] = sc.parallelize(Array(
+            Bytes.toBytes("1"),
+            Bytes.toBytes("2"),
+            Bytes.toBytes("3"),
+            Bytes.toBytes("4"),
+            Bytes.toBytes("5"),
+            Bytes.toBytes("6"),
+            Bytes.toBytes("7")))
+          val getRdd: RDD[String] = hc.bulkGet[Array[Byte], String](
+            TableName.valueOf(tableName),
+            2, // todo
+            rdd,
+            record => {
+              log.info("making Get")
+              new Get(record)
+            },
+            (result: Result) => {
+              val it = result.listCells().iterator()
+              val sb = new StringBuilder
+              sb.append(Bytes.toString(result.getRow) + ":")
+              while (it.hasNext) {
+                val cell: Cell = it.next()
+                val q = Bytes.toString(CellUtil.cloneQualifier(cell))
+                if (q.equals("counter")) {
+                  sb.append("(" + q + "," + Bytes.toLong(CellUtil.cloneValue(cell)) + ")")
+                } else {
+                  sb.append("(" + q + "," + Bytes.toString(CellUtil.cloneValue(cell)) + ")")
+                }
+              }
+              sb.toString()
+            })
+          getRdd.collect().foreach(println)
+        } finally {
+          sc.stop()
+        HBaseUtil.closeHbaseConn()
+        }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// BulkDelete
@@ -320,6 +325,10 @@ object HBaseExample {
     //        increment
     //      },
     //      4)
+
+
+
+
 
   }
 }

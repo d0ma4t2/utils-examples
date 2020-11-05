@@ -6,6 +6,7 @@ class DBObject extends Serializable {
   @BeanProperty var spark: Spark = _
   @BeanProperty var flink: Flink = _
   @BeanProperty var mysql: Mysql = _
+  @BeanProperty var phoenix: Phoenix = _
   @BeanProperty var redis: Redis = _
   @BeanProperty var elasticsearch: Elasticsearch = _
   @BeanProperty var hive: Hive = _
@@ -36,6 +37,11 @@ class Mysql extends Serializable {
   @BeanProperty var connectionTimeout: String = _
   @BeanProperty var maxLifetime: String = _
   @BeanProperty var readOnly: String = _
+}
+
+class Phoenix extends Serializable {
+  @BeanProperty var driver: String = _
+  @BeanProperty var url: String = _
 }
 
 class Redis extends Serializable {
