@@ -19,8 +19,7 @@ mysql:
 
 phoenix:
   driver: org.apache.phoenix.jdbc.PhoenixDriver
-  url: jdbc:phoenix:dn37,dn38,dn36:2181
-
+  url: jdbc:phoenix:172.23.26.111,172.23.26.112,172.23.26.113:2181
 
 redis:
   url: redis://localhost
@@ -41,7 +40,7 @@ hive:
   url:
 
 kudu:
-  url:
+  url: localhost:7051,localhost:7151,localhost:7251
 
 impala:
   url:

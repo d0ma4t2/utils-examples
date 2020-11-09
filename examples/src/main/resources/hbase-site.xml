@@ -4,7 +4,7 @@
 <configuration>
   <property>
     <name>hbase.rootdir</name>
-    <value>hdfs://nn35:8020/hbase</value>
+    <value>hdfs://dashboard.data.un-net.com:8020/hbase</value>
   </property>
   <property>
     <name>hbase.client.write.buffer</name>
@@ -92,7 +92,7 @@
   </property>
   <property>
     <name>hbase.zookeeper.quorum</name>
-    <value>dn37,dn38,dn36</value>
+    <value>node03.data.un-net.com,node01.data.un-net.com,node02.data.un-net.com</value>
   </property>
   <property>
     <name>hbase.zookeeper.property.clientPort</name>
@@ -100,6 +100,24 @@
   </property>
   <property>
     <name>hbase.rest.ssl.enabled</name>
+    <value>false</value>
+  </property>
+  <property>
+    <name>phoenix.schema.isNamespaceMappingEnabled</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>phoenix.schema.mapSystemTablesToNamespace</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>hbase.regionserver.wal.codec</name>
+    <value>org.apache.hadoop.hbase.regionserver.wal.IndexedWALEditCodec
+</value>  </property>  <property>    <name>phoenix.functions.allowUserDefinedFunctions</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>hbase.table.sanity.checks</name>
     <value>false</value>
   </property>
 </configuration>

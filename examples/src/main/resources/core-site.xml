@@ -4,7 +4,7 @@
 <configuration>
   <property>
     <name>fs.defaultFS</name>
-    <value>hdfs://nn35:8020</value>
+    <value>hdfs://dashboard.data.un-net.com:8020</value>
   </property>
   <property>
     <name>fs.trash.interval</name>

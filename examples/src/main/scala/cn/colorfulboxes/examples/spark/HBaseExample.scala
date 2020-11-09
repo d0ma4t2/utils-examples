@@ -3,7 +3,7 @@ package cn.colorfulboxes.examples.spark
 
 import cn.colorfulboxes.utils.spark.{HBaseUtil, SparkUtil}
 import org.apache.hadoop.hbase.{Cell, CellUtil, HBaseConfiguration, TableName}
-import org.apache.hadoop.hbase.client.{Delete, Get, Increment, Put, Result, Scan}
+import org.apache.hadoop.hbase.client.{ColumnFamilyDescriptorBuilder, Delete, Get, Increment, Put, Result, Scan, TableDescriptor, TableDescriptorBuilder}
 import org.apache.hadoop.hbase.io.ImmutableBytesWritable
 import org.apache.hadoop.hbase.spark.HBaseRDDFunctions.GenericHBaseRDDFunctions
 import org.apache.hadoop.hbase.spark.{HBaseContext, KeyFamilyQualifier}
@@ -51,18 +51,17 @@ object HBaseExample {
     /// 创建Hbase表
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //    val fruitTable = TableName.valueOf(tableName)
-    //    val tableDescr: TableDescriptor = TableDescriptorBuilder.newBuilder(fruitTable)
-    //      .setColumnFamily(ColumnFamilyDescriptorBuilder.of(columnFamily))
-    //      .build()
-    //
-    //        val admin = HBaseUtil.getHBaseConn.getAdmin
-    //    if (admin.tableExists(fruitTable)) {
-    //      admin.disableTable(fruitTable)
-    //      admin.deleteTable(fruitTable)
-    //    }
-    //    admin.createTable(tableDescr)
-    //
+//        val fruitTable = TableName.valueOf(tableName)
+//        val tableDescr: TableDescriptor = TableDescriptorBuilder.newBuilder(fruitTable)
+//          .setColumnFamily(ColumnFamilyDescriptorBuilder.of(columnFamily))
+//          .build()
+//
+//            val admin = HBaseUtil.getHBaseConn.getAdmin
+//        if (admin.tableExists(fruitTable)) {
+//          admin.disableTable(fruitTable)
+//          admin.deleteTable(fruitTable)
+//        }
+//        admin.createTable(tableDescr)
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// BulkPut
@@ -96,43 +95,43 @@ object HBaseExample {
     /// BulkGet
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        try {
-          val rdd: RDD[Array[Byte]] = sc.parallelize(Array(
-            Bytes.toBytes("1"),
-            Bytes.toBytes("2"),
-            Bytes.toBytes("3"),
-            Bytes.toBytes("4"),
-            Bytes.toBytes("5"),
-            Bytes.toBytes("6"),
-            Bytes.toBytes("7")))
-          val getRdd: RDD[String] = hc.bulkGet[Array[Byte], String](
-            TableName.valueOf(tableName),
-            2, // todo
-            rdd,
-            record => {
-              log.info("making Get")
-              new Get(record)
-            },
-            (result: Result) => {
-              val it = result.listCells().iterator()
-              val sb = new StringBuilder
-              sb.append(Bytes.toString(result.getRow) + ":")
-              while (it.hasNext) {
-                val cell: Cell = it.next()
-                val q = Bytes.toString(CellUtil.cloneQualifier(cell))
-                if (q.equals("counter")) {
-                  sb.append("(" + q + "," + Bytes.toLong(CellUtil.cloneValue(cell)) + ")")
-                } else {
-                  sb.append("(" + q + "," + Bytes.toString(CellUtil.cloneValue(cell)) + ")")
-                }
-              }
-              sb.toString()
-            })
-          getRdd.collect().foreach(println)
-        } finally {
-          sc.stop()
-        HBaseUtil.closeHbaseConn()
-        }
+    //        try {
+    //          val rdd: RDD[Array[Byte]] = sc.parallelize(Array(
+    //            Bytes.toBytes("1"),
+    //            Bytes.toBytes("2"),
+    //            Bytes.toBytes("3"),
+    //            Bytes.toBytes("4"),
+    //            Bytes.toBytes("5"),
+    //            Bytes.toBytes("6"),
+    //            Bytes.toBytes("7")))
+    //          val getRdd: RDD[String] = hc.bulkGet[Array[Byte], String](
+    //            TableName.valueOf(tableName),
+    //            2, // todo
+    //            rdd,
+    //            record => {
+    //              log.info("making Get")
+    //              new Get(record)
+    //            },
+    //            (result: Result) => {
+    //              val it = result.listCells().iterator()
+    //              val sb = new StringBuilder
+    //              sb.append(Bytes.toString(result.getRow) + ":")
+    //              while (it.hasNext) {
+    //                    val cell: Cell = it.next()
+    //                val q = Bytes.toString(CellUtil.cloneQualifier(cell))
+    //                if (q.equals("counter")) {
+    //                  sb.append("(" + q + "," + Bytes.toLong(CellUtil.cloneValue(cell)) + ")")
+    //                } else {
+    //                  sb.append("(" + q + "," + Bytes.toString(CellUtil.cloneValue(cell)) + ")")
+    //                }
+    //              }
+    //              sb.toString()
+    //            })
+    //          getRdd.collect().foreach(println)
+    //        } finally {
+    //          sc.stop()
+    //        HBaseUtil.closeHbaseConn()
+    //        }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// BulkDelete
@@ -325,9 +324,6 @@ object HBaseExample {
     //        increment
     //      },
     //      4)
-
-
-
 
 
   }

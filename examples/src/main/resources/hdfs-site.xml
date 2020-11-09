@@ -8,11 +8,11 @@
   </property>
   <property>
     <name>dfs.namenode.servicerpc-address</name>
-    <value>nn35:8022</value>
+    <value>dashboard.data.un-net.com:8022</value>
   </property>
   <property>
     <name>dfs.https.address</name>
-    <value>nn35:9871</value>
+    <value>dashboard.data.un-net.com:9871</value>
   </property>
   <property>
     <name>dfs.https.port</name>
@@ -20,7 +20,7 @@
   </property>
   <property>
     <name>dfs.namenode.http-address</name>
-    <value>nn35:9870</value>
+    <value>dashboard.data.un-net.com:9870</value>
   </property>
   <property>
     <name>dfs.replication</name>
