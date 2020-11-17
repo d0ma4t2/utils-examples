@@ -18,6 +18,7 @@ import scala.util.control.Breaks.{break, breakable}
 object UniversityNameDistinct {
 
   def main(args: Array[String]): Unit = {
+
     val spark: SparkSession = SparkSession.builder()
       .appName(this.getClass.getSimpleName)
       .master("local[*]")
@@ -35,6 +36,7 @@ object UniversityNameDistinct {
     val array: Array[String] = spark.read.jdbc("jdbc:mysql://172.23.27.219/lianjia", "university_dict", prop)
       .map(e => e.getString(1)).collect()
 
+    array.foreach(println)
     val bc: Broadcast[Array[String]] = spark.sparkContext.broadcast(array)
 
     spark.table("house.dwd_education_inf")
@@ -68,8 +70,9 @@ object UniversityNameDistinct {
           (community_id, name, area, kindergarten_name, kindergarten_distance, kindergarten_address, primary_school_name, primary_school_distance, primary_school_address, secondary_school_name, secondary_school_distance, secondary_school_address, university_school_name, university_school_distance, university_school_address)
         })
       }).toDF("community_id", "name", "area", "kindergarten_name", "kindergarten_distance", "kindergarten_address", "primary_school_name", "primary_school_distance", "primary_school_address", "secondary_school_name", "secondary_school_distance", "secondary_school_address", "university_school_name", "university_school_distance", "university_school_address")
-      .write
-      .mode("overwrite")
-      .saveAsTable("house.dwd_education_info")
+      .show(10)
+//      .write
+//      .mode("overwrite")
+//      .saveAsTable("house.dwd_education_info")
   }
 }

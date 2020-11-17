@@ -5,11 +5,13 @@ flink:
   url:
 
 mysql:
-  driverClassName: com.mysql.cj.jdbc.Driver
-  jdbcUrl: jdbc:mysql:///bigdata?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+  driverClassName: com.mysql.jdbc.Driver
+  jdbcUrl: jdbc:mysql://172.23.26.117:9030/house
+#  jdbcUrl: jdbc:mysql://172.23.26.117:9030
+#  jdbcUrl: jdbc:mysql:///bigdata?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
   username: root
-#  password: sjz123457
-  password: 123456
+  password: sjz123457
+#  password: 123456
   maximumPoolSize: 256
   minimumIdle: 8
   idleTimeout: 600000
