@@ -42,7 +42,7 @@ hive:
   url:
 
 kudu:
-  url: localhost:7051,localhost:7151,localhost:7251
+  url: 172.23.26.110:7051
 
 impala:
   url:

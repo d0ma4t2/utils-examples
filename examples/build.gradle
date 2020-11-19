@@ -22,3 +22,7 @@ jar {
     }
     zip64 = true
 }
+
+test {
+    useJUnitPlatform()
+}

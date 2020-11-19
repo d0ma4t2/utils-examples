@@ -43,7 +43,10 @@ dependencies {
             "cn.hutool:hutool-all:${hutoolVersion}",
             "io.lettuce:lettuce-core:${redisPoolVersion}",
             "com.zaxxer:HikariCP:${hikariCP}",
-            "org.apache.phoenix:phoenix-spark:${cdhPhoenixVersion}"
+            "org.apache.phoenix:phoenix-spark:${cdhPhoenixVersion}",
+            "org.junit.platform:junit-platform-launcher:1.2.0",
+            "org.junit.jupiter:junit-jupiter-engine:5.2.0",
+            "org.junit.vintage:junit-vintage-engine:5.2.0"
     )
 
 }
