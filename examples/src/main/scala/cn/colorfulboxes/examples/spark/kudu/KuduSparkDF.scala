@@ -46,6 +46,24 @@ class KuduSparkDF {
       .show(10)
   }
 
+  @Test
+  def sql() = {
+    spark.read
+      .option("kudu.table","house_kudu.people")
+      .option("kudu.master",DBconfig.getInstance.getKudu.url)
+      .format("kudu")
+      .load()
+      .createTempView("people")
+
+    spark.sql(
+      """
+        |select name
+        |from people
+        |limit 10
+        |""".stripMargin)
+      .show(10)
+  }
+
   @AfterEach
   def closeContext() = {
     sc.stop()

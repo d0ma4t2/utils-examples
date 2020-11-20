@@ -30,6 +30,7 @@ class KuduQuickstart {
     kuduContext = new KuduContext(DBconfig.getInstance.getKudu.url, sc)
   }
 
+
   @Test
   def createTable(): Unit = {
     // impala表名
@@ -40,10 +41,11 @@ class KuduQuickstart {
       kuduContext.deleteTable("house_kudu.people")
     }
 
+    // 不要使用
     val tableSchema: StructType = new StructType()
-      .add("name", StringType, nullable = false)
-      .add("age", IntegerType, nullable = false)
-      .add("gpa", DoubleType, nullable = false)
+      .add("name", StringType, nullable = false, comment = "姓名")
+      .add("age", IntegerType, nullable = false, comment = "年龄")
+      .add("gpa", DoubleType, nullable = false, comment = "工资")
 
     val keys = Seq("name")
 
